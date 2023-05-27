@@ -27,7 +27,15 @@ SELECT @TITLE=TITLE,@BUDGET=BUDGET,@HOMEPAGE=HOMEPAGE,@ORIGINAL_LANGUAGE=ORIGINA
 @RUNTIME=RUNTIME,@VOTE_AVERAGE=VOTE_AVERAGE,@TAGLINE=TAGLINE FROM MOVIE WHERE FILMID=@FILMID_NMR
 
 DECLARE @TEXT AS NVARCHAR(MAX)
-SET @TEXT=CONCAT(@TITLE, CHAR(13),' adlý filmin ','bütçesi ',CONVERT(VARCHAR,@BUDGET),' þeklindedir. Filmin sayfa bilgisi:  ',@HOMEPAGE,' þeklindedir. Orjinal dili ise ',' ', @ORIGINAL_LANGUAGE, ' þeklindedir. Orjinal adý ise , ',@ORIGINAL_TITLE,' þekindedir. Filmin içeriði, ',CONVERT(NVARCHAR(1000),@OVERVIEW), ' þeklindedir. Film ', CONVERT(NVARCHAR(100),@RELEASE_DATE),' tarihinde vizyona giriþ yapmýþtýr. Filmin toplam uzunluðu ise ',CONVERT(VARCHAR(100),@RUNTIME),' dakikadýr. Filmin seyircilerden aldýðý ortalama puan ise, ',CONVERT(VARCHAR(100),@VOTE_AVERAGE),' þeklindedir. Son olarak filmin sloganý ', @TAGLINE, ' þeklindedir.')
+SET @TEXT=CONCAT(@TITLE, ' adlý filmin ','bütçesi ',CONVERT(VARCHAR,@BUDGET),' þeklindedir.',CHAR(13),
+'Filmin sayfa bilgisi:  ',@HOMEPAGE,' þeklindedir.',CHAR(13),
+'Orjinal dili ise ',' ', @ORIGINAL_LANGUAGE, ' þeklindedir.',CHAR(13), 
+'Orjinal adý ise , ',@ORIGINAL_TITLE,' þekindedir.',CHAR(13),
+'Filmin içeriði, ',CONVERT(NVARCHAR(1000),@OVERVIEW), ' þeklindedir.',CHAR(13),
+'Film ', CONVERT(NVARCHAR(100),@RELEASE_DATE),' tarihinde vizyona giriþ yapmýþtýr.',CHAR(13) ,
+'Filmin toplam uzunluðu ise ',CONVERT(VARCHAR(100),@RUNTIME),' dakikadýr.', CHAR(13),
+'Filmin seyircilerden aldýðý ortalama puan ise, ',CONVERT(VARCHAR(100),@VOTE_AVERAGE),' þeklindedir.',CHAR(13),
+'Son olarak filmin sloganý ', @TAGLINE, ' þeklindedir.')
 --SET @TEXT=@TITLE+ ' adlý filmin '+'bütçesi '+CONVERT(VARCHAR,@BUDGET)+' þeklindedir. Filmin sayfa bilgisi:  '+@HOMEPAGE+' Orjinal dili ise '+@ORIGINAL_LANGUAGE+ ' þeklindedir. Orjinal adý ise, '+@ORIGINAL_TITLE+' þekindedir. Filmin içeriði, '+CONVERT(NVARCHAR(1000),@OVERVIEW)+ ' þeklindedir. Film '+ CONVERT(NVARCHAR(100),@RELEASE_DATE)+' tarihinde vizyona giriþ yapmýþtýr. Filmin toplam uzunluðu ise '+CONVERT(VARCHAR(100),@RUNTIME)+' dakikadýr. Filmin seyircilerden aldýðý ortalama puan ise, '+CONVERT(VARCHAR(100),@VOTE_AVERAGE)+' þeklindedir. Son olarak filmin sloganý: '+ @TAGLINE
 SELECT @TEXT 
 
